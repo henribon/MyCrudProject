@@ -6,6 +6,9 @@ import lombok.Data;
 @Data
 public class IncluirClienteRequestDTO {
 
+    @NotNull
+    private String id;
+
     @NotNull(message = "O campo nome é obrigatório e não pode ser nulo!")
     private String nome;
 
