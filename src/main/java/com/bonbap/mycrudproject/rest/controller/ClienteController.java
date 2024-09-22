@@ -2,7 +2,6 @@ package com.bonbap.mycrudproject.rest.controller;
 
 import com.bonbap.mycrudproject.dto.IncluirClienteRequestDTO;
 import com.bonbap.mycrudproject.service.ClienteService;
-import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
