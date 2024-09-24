@@ -1,15 +1,13 @@
 package com.bonbap.mycrudproject.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
-@Data
-@EqualsAndHashCode(callSuper=false)
+import java.util.UUID;
+
 @NoArgsConstructor
 @Entity
 @Table(name = "cliente")
@@ -17,7 +15,7 @@ public class Cliente {
 
     @Id
     @Column(name = "id_clt", nullable = false)
-    private String id;
+    private UUID id;
 
     @Column(name = "nm_clt", nullable = false)
     private String nome;
@@ -27,4 +25,11 @@ public class Cliente {
 
     @Column(name = "nm_tel", nullable = false)
     private String telefone;
+
+    @PrePersist
+    public void generateId() {
+        if (id == null) {
+            id = java.util.UUID.randomUUID();
+        }
+    }
 }

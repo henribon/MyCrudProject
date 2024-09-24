@@ -5,15 +5,18 @@ import com.bonbap.mycrudproject.dto.IncluirClienteRequestDTO;
 import com.bonbap.mycrudproject.mapper.ClienteMapper;
 import com.bonbap.mycrudproject.model.Cliente;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Log4j2
+@Service
 public class ClienteService extends DefaultService implements CrudService  {
 
     private final ClienteRepository repository;
 
     private final ClienteMapper mapper;
 
-    public ClienteService(ClienteRepository repository, ClienteRepository repository1, ClienteMapper mapper) {
+    public ClienteService(ClienteRepository repository, ClienteMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
@@ -27,6 +30,7 @@ public class ClienteService extends DefaultService implements CrudService  {
     }
 
     private Cliente salvarCliente(IncluirClienteRequestDTO request) {
-        return repository.save(mapper.requestToModel(request));
+        Cliente cliente = mapper.requestToModel(request);
+        return repository.save(cliente);
     }
 }

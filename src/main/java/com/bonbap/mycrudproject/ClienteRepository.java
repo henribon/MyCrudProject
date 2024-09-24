@@ -1,15 +1,16 @@
 package com.bonbap.mycrudproject;
 
 import com.bonbap.mycrudproject.model.Cliente;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-
+import org.springframework.data.jpa.repository.JpaRepository;;
+import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
-public interface ClienteRepository extends JpaRepository<Cliente, String>, JpaSpecificationExecutor<Cliente> {
+@Repository
+public interface ClienteRepository extends JpaRepository<Cliente, String> {
 
-    @Override
     Optional<Cliente> findById(String id);
 
     Optional<Cliente> listarClientes();
+
+    Cliente save(Cliente cliente);
 }

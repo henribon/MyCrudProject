@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public abstract class DefaultService {
-    private static final Logger log = LoggerFactory.getLogger(DefaultService.class);
+    protected static final Logger log = LoggerFactory.getLogger(DefaultService.class);
 
     public DefaultService() {
     }
