@@ -10,7 +10,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, String> {
 
     Optional<Cliente> findById(String id);
 
-    Optional<Cliente> listarClientes();
-
     Cliente save(Cliente cliente);
 }
