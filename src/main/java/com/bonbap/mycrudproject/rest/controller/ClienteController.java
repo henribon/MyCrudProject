@@ -32,6 +32,16 @@ public class ClienteController extends DefaultControllerBon{
         return super.post(service.incluirCliente(requestDTO));
     }
 
+    @Operation(summary = "Buscar um cliente.", operationId = "BuscarClienteId", description = "Busca um cliente pelo id.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Sucesso - Retorna uma lista de clientes"),
+            @ApiResponse(responseCode = "404", description = "Não encontrado - Não foram encontrados clientes", content = @io.swagger.v3.oas.annotations.media.Content),
+            @ApiResponse(responseCode = "500", description = "Erro interno - Erro interno durante a recuperação de clientes", content = @io.swagger.v3.oas.annotations.media.Content)})
+    @GetMapping()
+    public ResponseEntity<IncluirClienteRequestDTO> buscarCliente(@RequestParam String id) {
+        return super.get(service.buscarClientePorId(id));
+    }
+
     @GetMapping("/home")
     public String home() {
         return "Hello, World!";

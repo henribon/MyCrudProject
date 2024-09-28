@@ -13,4 +13,10 @@ public interface ClienteMapper {
     @Mapping(source = "cpf", target = "cpf")
     @Mapping(source = "telefone", target = "telefone")
     Cliente requestToModel(IncluirClienteRequestDTO request);
+
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "nome", target = "nome")
+    @Mapping(source = "cpf", target = "cpf")
+    @Mapping(source = "telefone", target = "telefone")
+    IncluirClienteRequestDTO modelToRequest(Cliente request);
 }

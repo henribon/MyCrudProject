@@ -2,15 +2,12 @@ package com.bonbap.mycrudproject.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
-
-import java.util.UUID;
 
 @NoArgsConstructor
 @Entity
-@Table(name = "cliente")
+@Data
+@Table(name = "CLIENTES")
 public class Cliente {
 
     @Id
