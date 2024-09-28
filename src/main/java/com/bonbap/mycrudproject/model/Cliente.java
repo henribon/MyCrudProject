@@ -15,7 +15,7 @@ public class Cliente {
 
     @Id
     @Column(name = "id_clt", nullable = false)
-    private UUID id;
+    private String id;
 
     @Column(name = "nm_clt", nullable = false)
     private String nome;
@@ -26,10 +26,10 @@ public class Cliente {
     @Column(name = "nm_tel", nullable = false)
     private String telefone;
 
-    @PrePersist
-    public void generateId() {
-        if (id == null) {
-            id = java.util.UUID.randomUUID();
-        }
-    }
+//    @PrePersist
+//    public void generateId() {
+//        if (id == null) {
+//            id = java.util.UUID.randomUUID();
+//        }
+//    }
 }
