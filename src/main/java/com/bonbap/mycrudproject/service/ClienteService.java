@@ -10,6 +10,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Log4j2
 @Service
 @Transactional
@@ -34,16 +36,17 @@ public class ClienteService extends DefaultService implements CrudService  {
 
     private Cliente salvarCliente(IncluirClienteRequestDTO request) {
         Cliente cliente = mapper.requestToModel(request);
+        repository.saveAndFlush(cliente);
         return repository.save(cliente);
     }
 
-    public IncluirClienteRequestDTO buscarClientePorId(String id) {
+    public IncluirClienteRequestDTO buscarClientePorId() {
         log.info("Buscando cliente por id");
-        log.trace("Buscar cliente por id: {}", id);
-        Cliente cliente = repository.findById(id).orElse(null);
+//        log.trace("Buscar cliente por id: {}", id);
+        List<Cliente> cliente = repository.findAll();
         if (cliente == null) {
             throw new ClienteNaoEncontradoException("Cliente não cadastrado.");
         }
-        return mapper.modelToRequest(cliente);
+        return mapper.modelToRequest(null);
     }
 }

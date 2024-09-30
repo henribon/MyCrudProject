@@ -2,12 +2,10 @@ package com.bonbap.mycrudproject.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @Entity
 @Data
-@Table(name = "CLIENTES")
+@Table(name = "t1209Clt")
 public class Cliente {
 
     @Id

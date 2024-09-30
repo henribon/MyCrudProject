@@ -38,8 +38,8 @@ public class ClienteController extends DefaultControllerBon{
             @ApiResponse(responseCode = "404", description = "Não encontrado - Não foram encontrados clientes", content = @io.swagger.v3.oas.annotations.media.Content),
             @ApiResponse(responseCode = "500", description = "Erro interno - Erro interno durante a recuperação de clientes", content = @io.swagger.v3.oas.annotations.media.Content)})
     @GetMapping()
-    public ResponseEntity<IncluirClienteRequestDTO> buscarCliente(@RequestParam String id) {
-        return super.get(service.buscarClientePorId(id));
+    public ResponseEntity<IncluirClienteRequestDTO> buscarCliente() {
+        return super.get(service.buscarClientePorId());
     }
 
     @GetMapping("/home")
