@@ -1,30 +1,33 @@
 package com.bonbap.mycrudproject.rest.controller;
 
-import com.bonbap.mycrudproject.dto.IncluirClienteRequestDTO;
-import com.bonbap.mycrudproject.service.ClienteService;
+import com.bonbap.mycrudproject.dto.IncludeClientRequestDTO;
+import com.bonbap.mycrudproject.service.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static com.bonbap.mycrudproject.constants.ProjectConstants.URL_CLIENTE_V1;
+import static com.bonbap.mycrudproject.constants.ProjectConstants.URL_CLIENT_V1;
 
 @RestController
-@RequestMapping(URL_CLIENTE_V1)
+@RequestMapping(URL_CLIENT_V1)
 public class ClienteController extends DefaultControllerBon{
 
-    ClienteService service;
+    private final ClientService service;
 
-    @Operation(summary = "Inclui um cliente", operationId = "incluiID", description = "Inclui um cliente no banco de dados")
+    public ClienteController(ClientService service) {
+        this.service = service;
+    }
+
+    @Operation(summary = "Creates a new client", operationId = "incluiID", description = "Creates a new client on database")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Sucesso - Retorna uma lista de clientes"),
-            @ApiResponse(responseCode = "404", description = "Não encontrado - Não foram encontrados clientes", content = @io.swagger.v3.oas.annotations.media.Content),
-            @ApiResponse(responseCode = "500", description = "Erro interno - Erro interno durante a recuperação de clientes", content = @io.swagger.v3.oas.annotations.media.Content)})
+            @ApiResponse(responseCode = "200", description = "Success"),
+            @ApiResponse(responseCode = "404", description = "Not Found", content = @io.swagger.v3.oas.annotations.media.Content),
+            @ApiResponse(responseCode = "500", description = "ERROR", content = @io.swagger.v3.oas.annotations.media.Content)})
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean> incluirCliente(@Valid @RequestBody IncluirClienteRequestDTO request) {
-        return super.post(service.incluirCliente(request));
+    public ResponseEntity<Boolean> createNewClient(@RequestBody IncludeClientRequestDTO requestDTO) {
+        return super.post(service.createClient(requestDTO));
     }
 }

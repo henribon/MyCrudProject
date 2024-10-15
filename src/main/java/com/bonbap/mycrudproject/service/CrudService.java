@@ -1,8 +1,8 @@
 package com.bonbap.mycrudproject.service;
 
-import com.bonbap.mycrudproject.dto.IncluirClienteRequestDTO;
+import com.bonbap.mycrudproject.dto.IncludeClientRequestDTO;
 
 public interface CrudService {
 
-    public boolean incluirCliente(IncluirClienteRequestDTO request);
+    public boolean createClient(IncludeClientRequestDTO request);
 }
