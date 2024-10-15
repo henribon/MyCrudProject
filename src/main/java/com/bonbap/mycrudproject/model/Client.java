@@ -6,25 +6,18 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "t1209Clt")
-public class Cliente {
+public class Client {
 
     @Id
     @Column(name = "id_clt", nullable = false)
     private String id;
 
     @Column(name = "nm_clt", nullable = false)
-    private String nome;
+    private String name;
 
     @Column(name = "num_clt", nullable = false)
-    private String cpf;
+    private String registrationNumber;
 
     @Column(name = "nm_tel", nullable = false)
-    private String telefone;
-
-//    @PrePersist
-//    public void generateId() {
-//        if (id == null) {
-//            id = java.util.UUID.randomUUID();
-//        }
-//    }
+    private String cellphoneNumber;
 }

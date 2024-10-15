@@ -12,18 +12,18 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @XmlAccessorType(XmlAccessType.FIELD)
 @Data
-public class IncluirClienteRequestDTO {
+public class IncludeClientRequestDTO {
 
     @NotNull
     private String id;
 
-    @NotNull(message = "O campo nome é obrigatório e não pode ser nulo!")
-    private String nome;
+    @NotNull(message = "The field name cannot be null!")
+    private String name;
 
-    @NotNull(message = "O campo nome é cpf e não pode ser nulo!")
-    private String cpf;
+    @NotNull(message = "The field registrationNumber cannot be null!")
+    private String registrationNumber;
 
-    @NotNull(message = "O campo nome é telefone e não pode ser nulo!")
-    private String telefone;
+    @NotNull(message = "The field cellphoneNumber cannot be null!")
+    private String cellphoneNumber;
 
 }
