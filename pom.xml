@@ -22,17 +22,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-			<version>10.10.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-sqlserver</artifactId>
-			<version>10.10.0</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>
 			<version>${mssql-jdbc.version}</version>
@@ -83,21 +72,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.flywaydb</groupId>
-				<artifactId>flyway-maven-plugin</artifactId>
-				<version>10.10.0</version>
-				<configuration>
-					<url>jdbc:mysql://localhost:1460/bon_dsv</url>
-					<user>sa</user>
-					<password>Passw0rd</password>
-					<sqlMigrationPrefix>V</sqlMigrationPrefix>
-					<sqlMigrationSeparator>__</sqlMigrationSeparator>
-					<locations>
-						<location>filesystem:src/main/resources/db/migrations/sql</location>
-					</locations>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
