@@ -25,5 +25,5 @@ public interface ClientMapper {
     @Mapping(source = "name", target = "name")
     @Mapping(source = "registrationNumber", target = "registrationNumber")
     @Mapping(source = "cellphoneNumber", target = "cellphoneNumber")
-    ClientResponseDTO modelToRequestList(Client request);
+    ClientResponseDTO modelToResponse(Client request);
 }

@@ -1,6 +1,7 @@
 package com.bonbap.mycrudproject.service;
 
 import com.bonbap.mycrudproject.ClienteRepository;
+import com.bonbap.mycrudproject.Exception.ClientNotFoundException;
 import com.bonbap.mycrudproject.dto.ClientResponseDTO;
 import com.bonbap.mycrudproject.dto.IncludeClientRequestDTO;
 import com.bonbap.mycrudproject.mapper.ClientMapper;
@@ -42,7 +43,14 @@ public class ClientService extends DefaultService implements CrudService  {
     public List<ClientResponseDTO> listClient() {
         log.info("Listing all clients...");
         return repository.findAll().stream()
-                .map(mapper::modelToRequestList)
+                .map(mapper::modelToResponse)
                 .collect(Collectors.toList());
+    }
+
+    public ClientResponseDTO findyById(Long id) {
+        log.trace("Finding Client by ID: {}", id);
+        log.info("Finding Client by ID");
+        Client client = repository.findById(String.valueOf(id)).orElseThrow();
+        return mapper.modelToResponse(client);
     }
 }
