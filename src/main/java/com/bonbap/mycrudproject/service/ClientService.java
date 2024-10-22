@@ -1,12 +1,16 @@
 package com.bonbap.mycrudproject.service;
 
 import com.bonbap.mycrudproject.ClienteRepository;
+import com.bonbap.mycrudproject.dto.ClientResponseDTO;
 import com.bonbap.mycrudproject.dto.IncludeClientRequestDTO;
 import com.bonbap.mycrudproject.mapper.ClientMapper;
 import com.bonbap.mycrudproject.model.Client;
 import jakarta.transaction.Transactional;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Service
@@ -35,5 +39,10 @@ public class ClientService extends DefaultService implements CrudService  {
         return repository.save(client);
     }
 
-
+    public List<ClientResponseDTO> listClient() {
+        log.info("Listing all clients...");
+        return repository.findAll().stream()
+                .map(mapper::modelToRequestList)
+                .collect(Collectors.toList());
+    }
 }

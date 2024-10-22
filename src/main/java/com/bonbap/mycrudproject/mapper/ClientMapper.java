@@ -1,5 +1,6 @@
 package com.bonbap.mycrudproject.mapper;
 
+import com.bonbap.mycrudproject.dto.ClientResponseDTO;
 import com.bonbap.mycrudproject.dto.IncludeClientRequestDTO;
 import com.bonbap.mycrudproject.model.Client;
 import org.mapstruct.Mapper;
@@ -19,4 +20,10 @@ public interface ClientMapper {
     @Mapping(source = "registrationNumber", target = "registrationNumber")
     @Mapping(source = "cellphoneNumber", target = "cellphoneNumber")
     IncludeClientRequestDTO modelToRequest(Client request);
+
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "name", target = "name")
+    @Mapping(source = "registrationNumber", target = "registrationNumber")
+    @Mapping(source = "cellphoneNumber", target = "cellphoneNumber")
+    ClientResponseDTO modelToRequestList(Client request);
 }
