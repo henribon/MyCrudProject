@@ -50,7 +50,7 @@ public class ClientService extends DefaultService implements CrudService  {
     public ClientResponseDTO findyById(Long id) {
         log.trace("Finding Client by ID: {}", id);
         log.info("Finding Client by ID");
-        Client client = repository.findById(String.valueOf(id)).orElseThrow();
+        Client client = repository.findById(String.valueOf(id)).orElseThrow(() -> new ClientNotFoundException("Client not found on DB."));
         return mapper.modelToResponse(client);
     }
 }

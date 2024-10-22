@@ -1,5 +1,6 @@
 package com.bonbap.mycrudproject.rest.controller;
 
+import com.bonbap.mycrudproject.Exception.ClientNotFoundException;
 import com.bonbap.mycrudproject.dto.ClientResponseDTO;
 import com.bonbap.mycrudproject.dto.IncludeClientRequestDTO;
 import com.bonbap.mycrudproject.service.ClientService;
@@ -47,7 +48,10 @@ public class ClienteController extends DefaultControllerBon{
     @Operation(summary = "Find By Id", operationId = "findById", description = "Find a client on DB by id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Success"),
-            @ApiResponse(responseCode = "404", description = "Not Found", content = @io.swagger.v3.oas.annotations.media.Content),
+            @ApiResponse(responseCode = "404", description = "Not Found", content = {
+                    @io.swagger.v3.oas.annotations.media.Content(mediaType = "application/json",
+                            schema = @io.swagger.v3.oas.annotations.media.Schema(implementation = ClientNotFoundException.class))
+            }),
             @ApiResponse(responseCode = "500", description = "ERROR", content = @io.swagger.v3.oas.annotations.media.Content)})
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClientResponseDTO> findById(@PathVariable Long id) {
