@@ -13,17 +13,20 @@ public interface ClientMapper {
     @Mapping(source = "name", target = "name")
     @Mapping(source = "registrationNumber", target = "registrationNumber")
     @Mapping(source = "cellphoneNumber", target = "cellphoneNumber")
+    @Mapping(source = "clientSituation", target = "clientSituation")
     Client requestToModel(IncludeClientRequestDTO request);
 
     @Mapping(source = "id", target = "id")
     @Mapping(source = "name", target = "name")
     @Mapping(source = "registrationNumber", target = "registrationNumber")
     @Mapping(source = "cellphoneNumber", target = "cellphoneNumber")
+    @Mapping(source = "clientSituation", target = "clientSituation")
     IncludeClientRequestDTO modelToRequest(Client request);
 
     @Mapping(source = "id", target = "id")
     @Mapping(source = "name", target = "name")
     @Mapping(source = "registrationNumber", target = "registrationNumber")
     @Mapping(source = "cellphoneNumber", target = "cellphoneNumber")
+    @Mapping(source = "clientSituation", target = "clientSituation")
     ClientResponseDTO modelToResponse(Client request);
 }

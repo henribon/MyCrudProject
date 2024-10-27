@@ -1,5 +1,6 @@
 package com.bonbap.mycrudproject.model;
 
+import com.bonbap.mycrudproject.dto.domain.DomainClientSituation;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,4 +21,8 @@ public class Client {
 
     @Column(name = "nm_tel", nullable = false)
     private String cellphoneNumber;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "id_sit", nullable = false)
+    private DomainClientSituation clientSituation;
 }

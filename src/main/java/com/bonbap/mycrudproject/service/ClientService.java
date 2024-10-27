@@ -4,6 +4,7 @@ import com.bonbap.mycrudproject.ClienteRepository;
 import com.bonbap.mycrudproject.Exception.ClientNotFoundException;
 import com.bonbap.mycrudproject.dto.ClientResponseDTO;
 import com.bonbap.mycrudproject.dto.IncludeClientRequestDTO;
+import com.bonbap.mycrudproject.dto.domain.DomainClientSituation;
 import com.bonbap.mycrudproject.mapper.ClientMapper;
 import com.bonbap.mycrudproject.model.Client;
 import jakarta.transaction.Transactional;
@@ -52,5 +53,12 @@ public class ClientService extends DefaultService implements CrudService  {
         log.info("Finding Client by ID");
         Client client = repository.findById(String.valueOf(id)).orElseThrow(() -> new ClientNotFoundException("Client not found on DB."));
         return mapper.modelToResponse(client);
+    }
+
+    public List<ClientResponseDTO> findByClientSituation(DomainClientSituation situation) {
+        log.trace("Finding Client by Situation: {}", situation);
+        return repository.findByClientSituation(situation).stream()
+                .map(mapper::modelToResponse)
+                .collect(Collectors.toList());
     }
 }

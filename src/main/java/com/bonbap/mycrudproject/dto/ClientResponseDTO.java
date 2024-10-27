@@ -1,5 +1,6 @@
 package com.bonbap.mycrudproject.dto;
 
+import com.bonbap.mycrudproject.dto.domain.DomainClientSituation;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -25,4 +26,7 @@ public class ClientResponseDTO {
 
     @NotNull(message = "The field cellphoneNumber cannot be null!")
     private String cellphoneNumber;
+
+    @NotNull(message = "The field domainClientSituation cannot be null!")
+    private DomainClientSituation clientSituation;
 }
